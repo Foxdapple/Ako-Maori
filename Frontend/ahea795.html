@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ahea795.css">
+    <title>Ako Māori</title>
+    <link rel="icon" type="image/x-icon" href = "https://cws.auckland.ac.nz/ako/api/Logo">
+</head>
+<body>
+
+    <!-- Login status at top right of page -->
+    <div class="section group">
+        <div class="col span_4_of_4" id="login_status">
+            <p id="status">Not logged in.</p>
+            <input type="submit" value="Sign Out" id="signout_button" onclick="signout()">
+        </div>
+    </div>
+
+    <!-- alert div -->
+    <div id="alert_popup">
+        <div id="popup_close">
+            <a onclick="hidePopup()"><p>X</p></a>
+        </div>
+        <div id="alert_text">
+            <p id="notifying_text"></p>
+        </div>
+    </div>
+
+    <!-- header/navigation section -->
+    <div class="section group">
+        <div class="col span_4_of_4" id="col4_overwrite">
+            <img id="logo" alt="Logo" onclick="showHome()" src="https://cws.auckland.ac.nz/ako/api/Logo">
+            
+            <div class="topnav" id="myTopnav">
+                <div id="navigation"> 
+                    <a onclick="showHome()" id="homelink"><p>🏠 Home</p></a>
+                    <a onclick="showGuest()" id="guestlink"><p>✍ Guest Book</p></a>
+                    <a onclick="showShop()" id="shoplink"><p>🛒 Shop</p></a>
+                    <a onclick="showRegistration()" id="registrationlink"><p>👪 User Registration</p></a>
+                    <a onclick="showLogin()" id="loginlink"><p>👩 User Login</p></a>
+                    <a onclick="showEvents()" id="eventslink"><p>📅 Events</p></a>
+                    <a onclick="showLearning()" id="learninglink"><p>📖 Learning te reo</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- body section -->
+        <!-- if on homescreen, display below -->
+        <div class="section group" id="home">
+            <div class="col span_4_of_4">
+                <img id="homeImg" alt="Maori Marae" src="https://live.staticflickr.com/31/60801116_b3a946b369_b.jpg">
+                <h4 class="title">Kia Ora!</h4>
+                <p class="hometext">Welcome to Ako Maori - Your introduction to the wonderful Maori culture.</p>
+                <br>
+                <p class="hometext">'Ako Maori' translates to "Learning Maori" in the aformentioned language. This is your virtual trainer to both the heart and the soul of Maori culture.
+                   Our mission here is to provide and facilitate a learning service in order to broaden and expand your knowledge of the Maori culture. 
+                   Through the use of different games we see to provide a blend of educational and excitement to learning the culture, language and heart of the Maori people. 
+                </p>
+                <br>
+                <h4 class="title">Discover the Maori Language:</h4>
+                <p class="hometext">Begin your studious journey by delving into the depths of the Maori language. As mentioned above the Maori Word Match Game is designed to make learning
+                    the language and developing key skills fun and enjoyable in order to ensure that it sticks better with you as a learner.
+                </p>
+                <br>
+                <h4 class="title">Shop:</h4>
+                <p class="hometext">Alongside our learning experience please feel free to shop and purchase genuine Maori tokens and art from our shop page.</p>
+            </div>
+        </div>
+
+        <!-- if on display comments, display below -->
+        <div class="section group" id="guest">
+            <div class="col span_1_of_4" id="guest_col1">
+                <h3>Please sign our guest book.</h3>
+                <p>Fill out the boxes below and click the 'Make comment' button to make a comment.</p>
+                <p>Please remember to be respectful.</p>
+                <form class="commentForm" onsubmit="return false">
+                    <input id="commentName" type="text" placeholder="Name">
+                    <textarea rows="6" id="commentBox"></textarea>
+                    <input type="submit" value="Make Comment" id="commentbtn" onclick="comment()">
+                </form>
+            </div>
+            <div class="col span_3_of_4" id="guest_col3">
+                <h1>Guest Comments:</h1>
+                <iframe id="guestcomments" src="https://cws.auckland.ac.nz/ako/api/Comments"></iframe>
+            </div>
+        </div>
+
+        <!-- if on display shop, display below -->
+        <div class="section group" id="shop">
+            <div class="col span_4_of_4" id="shop_col4">
+                <input placeholder="Search" type="text" id="searchBar">
+                <table id="shopTable"></table>
+            </div>
+        </div>
+        
+        <!-- if on display register, display below -->
+        <div class="section group" id="register">
+            <div class="col span_4_of_4" id="register_col4">
+                <div class="login_register">
+                    <form class="login_registerForm" onsubmit="return false">
+                        <input type="text" id="runame" name="runame" placeholder="Username">
+                        <input type="password" id="rpword" name="rpword" placeholder="Password">
+                        <input type="text" id="radd" name="radd" placeholder="Address">
+                        <input type="submit" value="Register" id="regbtn" onclick="register()">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- if on display login, display below -->
+        <div class="section group" id="login">
+            <div class="col span_4_of_4" id="login_col4">
+                <div class="login_register">
+                    <form class="login_registerForm" onsubmit="return false">
+                        <input type="text" id="luname" name="luname" placeholder="Username">
+                        <input type="password" id="lpword" name="lpword" placeholder="Password">
+                        <input type="submit" value="Login" id="regbtn" onclick="login()">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- if on display event, display below -->
+        <div class="section group" id="events">
+            <iframe id="download_ics"></iframe>
+            <div class="col span_4_of_4" id="eventDisplay"></div>
+        </div>
+
+
+        <!-- if on display learning, display below -->
+        <div class="section group" id="learning">
+            <div class="col span_4_of_4">
+                <h3 class="gameText">Welcome!</h3>
+                <p class="gameText">Here is where you can learn the wonderful Maori language by testing your knowledge via the form of a game.</p>
+                <p class="gameText">Match up the item on the left with the item on the right by dragging the left item into the middle, 
+                    if you get it right the box will turn green and your score will increase by 1.
+                    If you get it wrong, the box will turn red. 
+                </p>
+                <p class="gameText">To begin, please move an item from the right to the left, 
+                    doing so will start the game and begin the score counter.</p>
+                <p class="gameText">To load a new game, please click the button below.</p>
+                <input type="submit" value="New Game" id="regbtn" onclick="reload_game()">
+                <br>
+                <h3 id="score" class="gameText"></h3>
+                <br>
+                <table id="gameDisplay"></table>
+            </div>
+        </div>
+
+        <script src="ahea795.js"></script>
+</body>
+</html>
